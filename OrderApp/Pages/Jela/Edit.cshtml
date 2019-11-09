@@ -1,0 +1,50 @@
+﻿@page
+@model OrderApp.Pages.Jela.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Jelo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Jelo.Id" />
+            <div class="form-group">
+                <label asp-for="Jelo.Naziv" class="control-label"></label>
+                <input asp-for="Jelo.Naziv" class="form-control" />
+                <span asp-validation-for="Jelo.Naziv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jelo.Cijena" class="control-label"></label>
+                <input asp-for="Jelo.Cijena" class="form-control" />
+                <span asp-validation-for="Jelo.Cijena" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jelo.Opis" class="control-label"></label>
+                <input asp-for="Jelo.Opis" class="form-control" />
+                <span asp-validation-for="Jelo.Opis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jelo.Slika" class="control-label"></label>
+                <input asp-for="Jelo.Slika" class="form-control" />
+                <span asp-validation-for="Jelo.Slika" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+﻿@page
+@model OrderApp.Pages.Jela.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Jela[0].Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jela[0].Cijena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jela[0].Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jela[0].Slika)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Jela) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijena) @Model.Valuta
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slika)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">@Model.DugmeBrisi</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

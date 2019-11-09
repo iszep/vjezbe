@@ -1,10 +1,29 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Jelovnik";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Dobrodošli u naš jelovnik</h1>
+    <div class="card-columns" >
+        @foreach (var jelo in Model.Jela)
+        {
+            <div class="card">
+                <div class="card-img" style="background-image: url('@jelo.Slika');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@jelo.Naziv</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <button data-toggle="modal" data-target="#productModal" class="btn btn-primary" asp-page-handler="Naruci">
+                            Naruči
+                        </button>
+                    </small>
+                </div>
+            </div>
+
+        }
+    </div>
 </div>
