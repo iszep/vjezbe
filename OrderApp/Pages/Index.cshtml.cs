@@ -28,10 +28,10 @@ namespace OrderApp.Pages
             Jela =  _context.Jelo.ToList();
         }
 
-        public IActionResult OnPostNaruci()
+        public void OnPostNaruciGa()
         {
             var x = 1;
-            return Page();
+            //return Page();
         }
     }
 }
