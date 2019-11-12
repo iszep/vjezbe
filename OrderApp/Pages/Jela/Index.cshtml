@@ -22,9 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Jela[0].Opis)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Jela[0].Slika)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -35,18 +35,18 @@
                 @Html.DisplayFor(modelItem => item.Naziv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cijena) @Model.Valuta
+                @Html.DisplayFor(modelItem => item.Cijena)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Opis)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Slika)
-            </td>
+            </td>*@
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">@Model.DugmeBrisi</a>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Ispravi</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }

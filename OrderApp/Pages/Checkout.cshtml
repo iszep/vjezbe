@@ -1,0 +1,79 @@
+﻿@page
+@model OrderApp.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Checkout</h1>
+    @if (Model.ErrorMessage != null)
+    {
+    <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+    }
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Naziv
+                    </th>
+                    <th>
+                        Količina
+                    </th>
+                    <th>
+                        Cijene
+                    </th>
+                    <th>
+                        Iznos
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <div class="form-group">
+                    <label asp-for="Kupac" class="control-label"></label>
+                    <input asp-for="Kupac" class="form-control" />
+                    <span asp-validation-for="Kupac" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adresa" class="control-label"></label>
+                    <input asp-for="Adresa" class="form-control" />
+                    <span asp-validation-for="Adresa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefon" class="control-label"></label>
+                    <input asp-for="Telefon" class="form-control" />
+                    <span asp-validation-for="Telefon" class="text-danger"></span>
+                </div>
+                @foreach (var item in Model.Cart.CartItems)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Naziv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kolicina)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cijena)
+                        </td>
+                        <td>
+                            @(item.Kolicina * item.Cijena)
+                        </td>
+
+                    </tr>
+                }
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Ukupno:</td>
+                <td>@Model.Ukupno</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-danger" asp-page-handler="naruci">Naruči</button>
+    </form>
+</div>
+

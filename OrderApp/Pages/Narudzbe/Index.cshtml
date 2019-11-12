@@ -1,0 +1,65 @@
+﻿@page
+@model OrderApp.Pages.Narudzbe.IndexModel
+
+@{
+    ViewData["Title"] = "Narudžbe";
+}
+
+<h3>Računalne narudžbe</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Carts[0].Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carts[0].Kupac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carts[0].Adresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carts[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carts[0].Iznos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model.Carts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Kupac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Telefon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => cart.Iznos)
+                </td>
+            </tr>
+            @foreach (var item in cart.CartItems)
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@Html.DisplayFor(modelItem => item.Naziv)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Kolicina) </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

@@ -14,6 +14,7 @@ namespace OrderApp.Data
         {
         }
 
-        public DbSet<OrderApp.Models.Jelo> Jelo { get; set; }
+        public DbSet<Jelo> Jelo { get; set; }
+        public DbSet<Cart> Cart { get; set; }
     }
 }

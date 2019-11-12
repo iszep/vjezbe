@@ -3,9 +3,12 @@
 @{
     ViewData["Title"] = "Jelovnik";
 }
-
+@if (Model.Message != null)
+{
+    <div class="alert alert-danger" role="alert">@Model.Message</div>
+}
 <div class="text-center">
-    <h1 class="display-4">Dobrodošli u naš jelovnik</h1>
+    <h1 class="display-4">Iznos narudžbe: @Model.Iznos  <a style="margin-left: 120px;" asp-page="./Checkout"><i class="fa fa-shopping-cart"></i></a></h1>
     <form method="post">
         <div class="card-columns">
             @foreach (var jelo in Model.Jela)
@@ -14,11 +17,13 @@
                     <div class="card-img" style="background-image: url('@jelo.Slika');">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">@jelo.Naziv</h5>
+                        <h5 class="card-title"> @Html.DisplayFor(modelItem => jelo.Naziv)</h5>
+                        <h7 class="card-title"> @Html.DisplayFor(modelItem => jelo.Cijena)</h7>
+                        <p>@jelo.NarucenaKolicina</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">
-                            <button type="submit" class="btn btn-primary" asp-page-handler="NaruciGa">
+                            <button type="submit" class="btn btn-primary" asp-page-handler="NaruciGa" asp-route-id="@jelo.Id">
                                 Naruči
                             </button>
                         </small>
